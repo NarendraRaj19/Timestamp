@@ -49,10 +49,10 @@ app.get("/api/:timestamp", function(req, res){
   res.json({"unix":date.getTime(),"utc":d2.toUTCString()});
 });
 
-app.get("/api/", function(req, res) {
-  var resDate = new Date();
-  res.json({ unix: resDate.valueOf(), utc: resDate.toUTCString() });
-});
+// app.get("/api/", function(req, res) {
+//   var resDate = new Date();
+//   res.json({ unix: resDate.valueOf(), utc: resDate.toUTCString() });
+// });
 
 
 
