@@ -25,6 +25,31 @@ app.get("/api/hello", function (req, res) {
 });
 
 
+app.get("/api/:timestamp", function(req, res){
+  var date = new Date(req.params.timestamp);
+
+  //console.log("Test: ",date.getUTCFullYear()," ",date.getUTCMonth());
+
+  var d2 = new Date(date.getUTCFullYear(),date.getUTCMonth(), date.getUTCDate()-1, date.getHours(), date.getUTCMinutes(), date.getUTCSeconds());
+  //console.log("Test2 : ",d2.toUTCString());
+
+
+  // let year = date.getFullYear(); // 2020
+  // let month = date.getMonth() + 1; // 4 (note zero index: Jan = 0, Dec = 11)
+  // let day = date.getDate() + 1; // 9
+  
+  // const gmtDateTime = new Date().toUTCString();
+  // console.log("UTC String: ",gmtDateTime);
+  
+  //let timestmp = date.getTime();
+  
+  
+  //console.log("URL Hit:", year ,":: ", month ," ", day," ",date.getUTCDay()," ",date.getUTCMonth());
+  //{"unix":1451001600000,"utc":"Fri, 25 Dec 2015 00:00:00 GMT"}
+  res.json({"unix":date.getTime(),"utc":d2.toUTCString()});
+});
+
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
