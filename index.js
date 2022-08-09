@@ -25,6 +25,7 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+//route to handle empty paramter
 app.get("/api", function(req, res){
     console.log("Inside W/O parameter step");
     var resDate = new Date();
@@ -36,7 +37,8 @@ app.get("/api/:timestamp", function(req, res){
 
   let input = req.params.timestamp;
   
-  if(input.includes(' ') || input.includes('-')){
+  //Date String in JavaScript has three formats : ISO, Short Date & Long Date refer W3 Schools
+  if(input.includes(' ') || input.includes('-') || input.includes('/')){
     /* Date String */
       responseObject['unix'] = new Date(input).getTime()
       responseObject['utc'] = new Date(input).toUTCString()
